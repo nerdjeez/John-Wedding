@@ -1,0 +1,20 @@
+FROM oven/bun:1
+
+WORKDIR /app
+
+COPY package.json .
+COPY bun.lockb .
+
+COPY prisma ./prisma
+
+RUN bun install --production
+
+RUN bun x prisma generate
+
+COPY src ./src
+
+ENV PORT=3000
+
+EXPOSE 3000
+
+CMD ["bun", "src/index.js"]

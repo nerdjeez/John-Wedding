@@ -1,0 +1,53 @@
+// server/prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("customer") // "admin" atau "customer"
+  createdAt DateTime @default(now())
+  orders    Order[]
+}
+
+model Package {
+  id          Int         @id @default(autoincrement())
+  name        String
+  slug        String
+  price       Float
+  image       String      // Path gambar atau URL
+  description String
+  features    String      // Disimpan sebagai text dipisah koma (misal: "Dekor,Foto,Catering")
+  createdAt   DateTime    @default(now())
+  orderItems  OrderItem[]
+}
+
+model Order {
+  id         Int         @id @default(autoincrement())
+  userId     Int
+  user       User        @relation(fields: [userId], references: [id])
+  totalPrice Float
+  status     String      @default("pending") // pending, paid, cancelled
+  createdAt  DateTime    @default(now())
+  items      OrderItem[]
+}
+
+model OrderItem {
+  id        Int     @id @default(autoincrement())
+  orderId   Int
+  order     Order   @relation(fields: [orderId], references: [id])
+  packageId Int
+  package   Package @relation(fields: [packageId], references: [id])
+  price     Float
+  extras    String? // JSON string untuk detail tambahan
+}

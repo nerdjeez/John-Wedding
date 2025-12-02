@@ -1,0 +1,106 @@
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+/* Paksa deteksi file agar Tailwind membaca class di JSX */
+@source "../index.html";
+@source "./**/*.{js,jsx,ts,tsx}";
+
+@custom-variant dark (&:is(.dark *));
+
+/* === TEMA COFFEE (PERMANEN DI ROOT) === */
+:root {
+  /* BACKGROUND: Hitam Kecoklatan (Coffee Dark) */
+  --background: #2d2621;
+  --foreground: #ece5d8;
+
+  --card: #3a322c;
+  --card-foreground: #ece5d8;
+
+  --popover: #3a322c;
+  --popover-foreground: #ece5d8;
+
+  /* PRIMARY: Warna Emas/Krem (Tombol Utama) */
+  --primary: #c0a080;
+  --primary-foreground: #2d2621;
+
+  /* SECONDARY: Coklat Tua (Tombol Kedua) */
+  --secondary: #4a4039;
+  --secondary-foreground: #ece5d8;
+
+  --muted: #312b26;
+  --muted-foreground: #c5bcac;
+
+  --accent: #59493e;
+  --accent-foreground: #ece5d8;
+
+  --destructive: #b54a35;
+  --destructive-foreground: #ffffff;
+
+  --border: #4a4039;
+  --input: #4a4039;
+  --ring: #c0a080;
+
+  /* CHART COLORS (Opsional) */
+  --chart-1: #c0a080;
+  --chart-2: #b3906f;
+  --chart-3: #a67c52;
+  --chart-4: #8d6e4c;
+  --chart-5: #735a3a;
+
+  /* SIDEBAR: Coffee Dark */
+  --sidebar-background: #2d2621;
+  --sidebar-foreground: #ece5d8;
+  --sidebar-primary: #c0a080;
+  --sidebar-primary-foreground: #2d2621;
+  --sidebar-accent: #59493e;
+  --sidebar-accent-foreground: #ece5d8;
+  --sidebar-border: #4a4039;
+  --sidebar-ring: #c0a080;
+
+  --radius: 0.5rem;
+}
+
+/* MAPPING VARIABEL KE TAILWIND V4 */
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-sidebar: var(--sidebar-background);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "project-elysia",
+  "version": "1.0.0",
+  "workspaces": [
+    "client-js",
+    "server"
+  ],
+"scripts": {
+  "dev:client": "bun run --cwd client-js dev",
+  "dev:server": "bun run --cwd server index.js",
+  "dev": "concurrently \"bun run dev:server\" \"bun run dev:client\""
+},
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
