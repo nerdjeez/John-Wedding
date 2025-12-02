@@ -35,7 +35,7 @@ export default function Register() {
     setLoading(true);
     try {
       // Kirim ke Backend (Pastikan backend jalan di port 3000)
-      const res = await fetch("http://localhost:3000/api/register", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

@@ -31,7 +31,7 @@ export default function AdminDashboard() {
 
   const fetchAdminData = async () => {
     try {
-      const res = await fetch(`http://localhost:3000/api/admin/orders?userId=${user.id}`);
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/orders?userId=${user.id}`);
       const result = await res.json();
       if (result.success) {
         setOrders(result.data);
@@ -49,7 +49,7 @@ export default function AdminDashboard() {
     setProcessingId(orderId);
 
     try {
-      const res = await fetch(`http://localhost:3000/api/admin/orders/${orderId}/status?userId=${user.id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/orders/${orderId}/status?userId=${user.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus })
@@ -87,7 +87,7 @@ export default function AdminDashboard() {
     setProcessingId(orderId);
 
     try {
-      const res = await fetch(`http://localhost:3000/api/admin/orders/${orderId}?userId=${user.id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/orders/${orderId}?userId=${user.id}`, {
         method: "DELETE",
       });
 
