@@ -3,7 +3,7 @@ import Home from "./homepage/menu.jsx";
 import Paket from "./paket/paket.jsx";
 import FloatingNavbar from "@/components/FloatingNavbar";
 import Keranjang from "./keranjang/keranjang.jsx";
-import Login from "./login/Login.jsx";
+import Login from "./login/login.jsx";
 import Register from "./login/register/Register.jsx";
 import AdminDashboard from "./admin/AdminDashboard.jsx"; 
 
