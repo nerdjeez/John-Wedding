@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
 // 1. Tambahkan import icon LogIn
@@ -13,6 +13,7 @@ export default function FloatingNavbar() {
   const { scrollY } = useScroll();
   const [visible, setVisible] = useState(true);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const isActive = (path) => location.pathname === path;
 
@@ -25,8 +26,29 @@ export default function FloatingNavbar() {
     }
   });
 
+  const handleScrollToAbout = (e) => {
+    e.preventDefault();
+    setIsOpen(false);
+
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(()=> {
+        const element = document.getElementById("about");
+        if(element) {
+          element.scrollIntoView({behavior: "smooth"});
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById("about");
+      if (element) {
+        element.scrollIntoView({behavior: "smooth"});
+      }
+    }
+  };
+
   const navLinks = [
     { name: "Home", link: "/" },
+    { name: "About", link: "/#about", isScroll: true },
     { name: "Paket", link: "/paket" },
     { 
       name: <ShoppingBag className="w-5 h-5" />, 

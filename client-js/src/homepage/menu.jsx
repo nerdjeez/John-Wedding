@@ -32,7 +32,6 @@ const omori = {
     }
 }
 
-// === KOMPONEN BARU: ABOUT SECTION ===
 function AboutSection() {
     const features = [
         {
@@ -53,7 +52,7 @@ function AboutSection() {
     ];
 
     return (
-        <section className="py-20 px-6 bg-background text-foreground">
+        <section id="about" className="py-20 px-6 bg-background text-foreground scroll-mt-24">
             <div className="max-w-6xl mx-auto space-y-16">
                 
                 {/* Intro Text */}
