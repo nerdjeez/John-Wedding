@@ -22,8 +22,8 @@ export default function Paket() {
   const fetchPackages = async () => {
     setLoading(true);
     try {
-      // Pastikan backend jalan di port 3000
-      const response = await fetch("http://localhost:3000/api/packages");
+      //nyambungin ke cloudflare
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/packages`);
       if (!response.ok) {
         throw new Error(`Server error: ${response.status}`);
       }
