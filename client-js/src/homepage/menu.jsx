@@ -1,9 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import DialogueBox from "@/components/DialogueBox";
 import { HeartHandshake, Star, Users, CalendarCheck } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useEffect } from "react";
 
 export default function Home(){
+    const location = useLocation();
+    useEffect(() => {
+        if (location.hash === "#about") {
+            const element = document.getElementById("about");
+            if (element) {
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: "smooth" });
+                }, 100);
+            }
+        }
+    }, [location]);
+
     return (
         <div className="flex flex-col w-full">
             {/* 1. HERO SECTION (Gambar Bunga) */}

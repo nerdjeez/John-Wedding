@@ -30,19 +30,13 @@ export default function FloatingNavbar() {
     e.preventDefault();
     setIsOpen(false);
 
-    if (location.pathname !== "/") {
-      navigate("/");
-      setTimeout(()=> {
-        const element = document.getElementById("about");
-        if(element) {
-          element.scrollIntoView({behavior: "smooth"});
-        }
-      }, 100);
-    } else {
+    if (location.pathname === "/") {
       const element = document.getElementById("about");
       if (element) {
-        element.scrollIntoView({behavior: "smooth"});
+        element.scrollIntoView({ behavior: "smooth" });
       }
+    } else {
+      navigate("/#about"); 
     }
   };
 
