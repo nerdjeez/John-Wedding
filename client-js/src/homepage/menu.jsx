@@ -52,12 +52,12 @@ function AboutSection() {
     ];
 
     return (
-        <section id="about" className="py-20 px-6 bg-background text-foreground scroll-mt-24">
+        <section className="py-20 px-6 bg-background text-foreground scroll-mt-24">
             <div className="max-w-6xl mx-auto space-y-16">
                 
                 {/* Intro Text */}
                 <div className="text-center space-y-6 max-w-3xl mx-auto">
-                    <h2 className="text-3xl md:text-5xl font-serif font-bold text-primary tracking-tight">
+                    <h2 id="about" className="text-3xl md:text-5xl font-serif font-bold text-primary tracking-tight">
                         Apa itu John Wedding?
                     </h2>
                     <div className="w-24 h-1.5 bg-primary/30 mx-auto rounded-full"></div>
